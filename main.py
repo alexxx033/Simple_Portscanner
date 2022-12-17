@@ -9,9 +9,9 @@ os.system('cls')
 remoteServer = input("Enter a remote host to scan:")
 remoteServerIP = socket.gethostbyname(remoteServer)
 
-print("_") * 60
+print("_"*60)
 print("Please wait, scanning remote host"), remoteServerIP
-print("_") * 60
+print("_"*60)
 
 time1 = datetime.now()
 
@@ -23,7 +23,7 @@ try:
         print("Port {}:          Open").format(port)
         sock.close()
 
-except KayboardInterrupt:
+except KeyboardInterrupt:
     print("You pressed Ctrl+C")
     sys.exit()
 
