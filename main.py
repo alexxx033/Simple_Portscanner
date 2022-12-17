@@ -16,12 +16,17 @@ print("_"*60)
 time1 = datetime.now()
 
 try:
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    print("Socket successfully created!")
+except socket.error as err:
+    print("Socket creation failed with error %s" % (err))
+
+try:
     for port in range(1, 5000):
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         result = sock.connect_ex((remoteServerIP, port))
-    if result == 0:
-        print("Port {}:          Open").format(port)
-        sock.close()
+        if result == 0:
+            print("Port {}:          Open").format(port)
+            sock.close()
 
 except KeyboardInterrupt:
     print("You pressed Ctrl+C")
