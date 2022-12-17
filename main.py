@@ -16,9 +16,9 @@ print("_") * 60
 time1 = datetime.now()
 
 try:
-    for port in range(1, 5000)
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    result = sock.connect_ex((remoteServerIP, port))
+    for port in range(1, 5000):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        result = sock.connect_ex((remoteServerIP, port))
     if result == 0:
         print("Port {}:          Open").format(port)
         sock.close()
