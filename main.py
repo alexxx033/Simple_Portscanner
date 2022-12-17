@@ -5,7 +5,7 @@ import sys
 from datetime import datetime
 
 os.system('cls')
-sadcaf
+
 remoteServer = input("Enter a remote host to scan:")
 remoteServerIP = socket.gethostbyname(remoteServer)
 
