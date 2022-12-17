@@ -1,11 +1,11 @@
 import socket
-import subprocess
+import os
 import sys
 
 from datetime import datetime
 
-subprocess.call('clear', shell=True)
-
+os.system('cls')
+sadcaf
 remoteServer = input("Enter a remote host to scan:")
 remoteServerIP = socket.gethostbyname(remoteServer)
 
