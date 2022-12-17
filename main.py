@@ -1,32 +1,33 @@
 import socket
-import os
+# import os
 import sys
 
 from datetime import datetime
 
-os.system('cls')
+# os.system('clear')
+print('\033c')
 
 remoteServer = input("Enter a remote host to scan:")
+start_port = int(input("Enter start port: "))
+end_port = int(input("Enter end port: "))
 remoteServerIP = socket.gethostbyname(remoteServer)
 
 print("_"*60)
-print("Please wait, scanning remote host"), remoteServerIP
+print("Please wait, scanning remote host", remoteServerIP)
 print("_"*60)
 
 time1 = datetime.now()
 
 try:
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    print("Socket successfully created!")
-except socket.error as err:
-    print("Socket creation failed with error %s" % (err))
-
-try:
-    for port in range(1, 5000):
+    for port in range(start_port, end_port + 1):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         result = sock.connect_ex((remoteServerIP, port))
         if result == 0:
-            print("Port {}:          Open").format(port)
-            sock.close()
+            print("Port {}: Open".format(port))
+    sock.close()
+
+except socket.error as err:
+    print("Socket creation failed with error %s" % (err))
 
 except KeyboardInterrupt:
     print("You pressed Ctrl+C")
